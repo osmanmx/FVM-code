@@ -1,6 +1,6 @@
 %Modelo Bidodominio - Método de Volúmenes Finitos (FVM)
 %Autor: Osman Villanueva García
-%Licencia GPL versión 3.0
+%[Licencia GPL versión 3.0](https://github.com/osmanmx/FVM-code/blob/main/LICENSE)
 % /***************************************************************************                                        *
 %  *   Copyright (C) 2013 by Osman Villanueva Garcia                         *
 %  *   Email osman@educart.org                                               *
@@ -22,11 +22,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Rutina para generar la malla admisible y establecer condiciones iniciales en t=0
 % clear;
-xmin=0;%input(’digite el valor minimo de x xmin=’);
-xmax=5;%input(’digite el valor maximo de x xmax=’);
-ymin=0;%input(’digite el valor minimo de x ymin=’);
-ymax=5;%input(’digite el valor maximo de x ymax=’);
-n=20;%input(’digite el numero de intervalos n=’);
+xmin=0; %input(’digite el valor minimo de x xmin=’);
+xmax=5; %input(’digite el valor maximo de x xmax=’);
+ymin=0; %input(’digite el valor minimo de x ymin=’);
+ymax=5; %input(’digite el valor maximo de x ymax=’);
+n=20; %input(’digite el numero de intervalos n=’);
 
 %vectores de coordenadas de los puntos de la malla
 deltax=(xmax-xmin)/n;deltay=(ymax-ymin)/n;
@@ -42,16 +42,16 @@ w=0; a1=0.16875;b=1.0;
 %constantes
 cm=1;B=1/2000;
 t=0;
-dt=1e-3;%Paso en el tiempo
-ka=deltax*deltay;%area de celda
+dt=1e-3; %Paso en el tiempo
+ka=deltax*deltay; %area de celda
 for i=1:n
 for j=1:n
 x=linspace(coordenadasx(i),coordenadasx(i+1),20);
 y=linspace(coordenadasy(i),coordenadasx(i+1),20);
-vf=1 - 1./(1+exp(-50*sqrt(x.^2+y.^2)- 0.1));%Funcion de potencial inicial
+vf=1 - 1./(1+exp(-50*sqrt(x.^2+y.^2)- 0.1)); %Funcion de potencial inicial
 vf=trapz(y,vf);vf=vf*ones(1,20);
 v(i,j,1)=trapz(x,vf)/ka;
-u(i,j,1)=0.0;%Funcion potencial V_e inicial
+u(i,j,1)=0.0; %Funcion potencial V_e inicial
 Hf=a1*v(i,j,1)-b*w;Hf=Hf*ones(1,20);
 H=trapz(y,Hf);H=H*ones(1,20);
 Hk(i,j)=trapz(x,H)/ka;
@@ -100,6 +100,7 @@ n8=[-1 0];
 %se debe calcular primero Mi y Me, luego se determina di y de, finalmente se hace la suma
 %se debe iterar para cada celda y determinar: los valores de Mi y Me
 %en cada celda con el programa calculo M2
+
 suma=0;
 if i==1 && j==1% esta en la esquina superior izquierda (suma 2)
 normal=n4’; calculoM2;de=(Mkle+Mlke)/(deltax/2*Mkle+deltax/2*Mlke)*deltax;
@@ -197,8 +198,8 @@ for ii=n+1:n^2
 cont=cont+1;
 a(ii,cont)=di+de;
 end
-%diagonal principal
 
+%diagonal principal
 %bordes superiores
 for jj=2:n
 a(jj,jj)=-3*(di+de);a(jj,jj-1)=di+de;a(jj,jj+1)=di+de;
@@ -228,7 +229,7 @@ end
 end
 %contiguos a la diagonal principal
 for jj=n+1:n^2-1
-if a(jj,jj)==-4*(di+de);% centrales(antes y despues)
+if a(jj,jj)==-4*(di+de); % centrales(antes y despues)
 a(jj,jj-1)=di+de;a(jj,jj+1)=di+de;
 end
 end
@@ -236,7 +237,7 @@ cont=0;
 for ii=1:n
 for jj=1:n
 cont=cont+1;
-if ii==1 && jj==1% esta en la esquina superior izquierda (suma 2)
+if ii==1 && jj==1 % esta en la esquina superior izquierda (suma 2)
 
 %coeficientes del vector de terminos independientes
 b(cont)=ka*Iapp-di*(v(ii,jj+1,k)-v(ii,jj,k-1))-di*(v(ii+1,jj,k-1)-v(ii,jj,k-1));
@@ -248,10 +249,10 @@ elseif ii==1 % esta en los bordes superiores (suma 3)
 b(cont)=ka*Iapp-di*(v(ii,jj-1,k-1)-v(ii,jj,k-1))-di*(v(ii,jj+1,k-1)-v(ii,jj,k-1))-
 di*(v(ii+1,jj,k-1)-v(ii,jj,k-1));
 
-elseif ii==n && jj==1 %esta en la esquina inferior izquierda (suma 2)
+elseif ii==n && jj==1 % esta en la esquina inferior izquierda (suma 2)
 b(cont)=ka*Iapp-di*(v(ii-1,jj,k-1)-v(ii,jj,k-1))-di*(v(ii,jj+1,k-1)-v(ii,jj,k-1));
 
-elseif ii==n && jj==n %esta en la esquina inferior derecha (suma 2)
+elseif ii==n && jj==n % esta en la esquina inferior derecha (suma 2)
 b(cont)=ka*Iapp-di*(v(ii-1,jj,k-1)-v(ii,jj,k-1))-di*(v(ii,jj-1,k-1)-v(ii,jj,k-1));
 
 elseif jj==1 % esta en los bordes laterales izquierdos (suma 3)
@@ -305,12 +306,12 @@ clear;clc
 %con v y w calcular Iion e Iapp
 %empezar a iterar en tiempo
 %calcular los nuevos u,w,v, H, Iion e Istm
-gamma=-100;%dato para ingresar 
-teta=0.25;%dato para ingresar 
-x0=0.5;%dato para ingresar 
-y0=0.5;%dato para ingresar 
+gamma=-100; %dato para ingresar 
+teta=0.25; %dato para ingresar 
+x0=0.5; %dato para ingresar 
+y0=0.5; %dato para ingresar 
 
-malla2;% calcula u,v,w, H, Ion en el tiempo 0
+malla2; % calcula u,v,w, H, Ion en el tiempo 0
 for k=2:5
 t=t+dt;
 if t>1e-3 && (coordenadasx(i)-x0)^2+(coordenadasy(j)-y0)^2<0.04;
@@ -323,7 +324,7 @@ for j= 1:n
 H=a1*v(i,j,k-1)- b*wk(i,j);
 w=dt*Hk+w;sumatoria2;
 v(i,j,k)=dt/(B*cm*ka)*(ka*Iapp-B*ka*Ion(i,j)+B*cm*ka/dt*v(i,j,k-1)-suma);
-matrices;%Calcula el valor de u
+matrices; %Calcula el valor de u
 Iion=-gamma*(wk(i,j)-v(i,j)*(1-v(i,j))*(v(i,j)-teta));
 Ion(i,j)=Iion*((coordenadasx(i+1)-coordenadasx(i))*(coordenadasy(j+1)-coordenadasy(j)))/ka;
 end
@@ -338,7 +339,7 @@ for z=1:20
 subplot(1,2,1)
 contourf(xg,yg,v(1:n,1:n,z)) %Grafica de la superficie para V_{m}
 subplot(1,2,2)
-surf(xg,yg,v(1:n,1:n,z)),view(60,30)%Curvas de nivel para V_{m}.
+surf(xg,yg,v(1:n,1:n,z)),view(60,30) %Curvas de nivel para V_{m}.
 title(z)
 pause(0.1)
 end
