@@ -93,11 +93,13 @@ normal=n4’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i,j+1)-v(i,j));
 normal=n6’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i+1,j)-v(i,j));
+
 elseif i==1 && j==n % esta en la esquina superior derecha (suma 2)
 normal=n8’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i,j-1)-v(i,j));
 normal=n6’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i+1,j)-v(i,j));
+
 elseif i==1 % esta en los bordes superiores (suma 3)
 normal=n8’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i,j-1)-v(i,j));
@@ -105,11 +107,13 @@ normal=n4’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i,j+1)-v(i,j));
 normal=n6’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i+1,j)-v(i,j));
+
 elseif i==n && j==1 % esta en la esquina inferior izquierda (suma 2)
 normal=n4’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i-1,j)-v(i,j));
 normal=n2’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i,j+1)-v(i,j));
+
 elseif j==1 % esta en los bordes laterales izquierdos (suma 3)
 normal=n2’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i-1,j)-v(i,j));
@@ -117,6 +121,7 @@ normal=n6’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i+1,j)-v(i,j));
 normal=n4’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i,j+1)-v(i,j));
+
 elseif i==n % esta en el borde inferior (suma 3)
 normal=n8’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i,j-1)-v(i,j));
@@ -124,11 +129,13 @@ normal=n4’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i,j+1)-v(i,j));
 normal=n2’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i-1,j)-v(i,j));
+
 elseif i==n && j==n % esta en la esquina inferior derecha (suma 2)
 normal=n8’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i,j-1)-v(i-1,j));
 normal=n2’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i,j+1)-v(i,j));
+
 elseif j==n % esta en el borde lateral derecho (suma 3)
 normal=n2’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i-1,j)-v(i,j));
@@ -136,6 +143,7 @@ normal=n6’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i+1,j)-v(i,j));
 normal=n8’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i,j-1)-v(i,j));
+
 else % esta en las celdas centrales (suma 4)
 normal=n8’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i,j-1)-v(i,j));
@@ -146,7 +154,6 @@ suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i-1,j)-v(i,j));
 normal=n6’; calculoM;d=(Mkl+Mlk)/(deltax/2*Mkl+deltax/2*Mlk)*deltax;
 suma =suma+1/(1+gamma)*d*deltax/deltax+(v(i+1,j)-v(i,j));
 \end
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Programa principal
