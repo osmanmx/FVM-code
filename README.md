@@ -35,3 +35,12 @@ El punto de partida del algoritmo FVM es la configuración de la malla admisible
 </div>
 <br>
 
+## Referencias bibliográficas
+
+Eymard, R. and Gallou\"{e}t, T. and Herbin, R. (2000). Finite volume methods. Handbook of Numerical Analysis, vol. VII. Primera edición, P.G. Ciarlet, J.L. Lions, North-Holland, Amsterdam, pp 713-1020.	
+	
+Moukalled, F. and Mangani, L. and Darwish, M. (2016). The Finite Volume Method in Computational Fluid Dynamics. Primera Edición, Springer-Verlag, New York, USA. doi: 10.1007/978-3-319-16874-6.
+	
+Henriquez, C.S. and Muzikant, A.L. and Smoak, C.K. (1996). Anisotropy, fiber curvature and bath loading effects on activation in thin and thick cardiac tissue preparations: Simulations in a three-dimensional bidomain model. Vol. 7(5), J. Cardiovasc. Electrophysiol, pp 424-444.
+
+Trew, M.I. and Grice, L. and Smaill, B. and Pullan, A. (2005). A finite volume method for modeling discontinuous electrical activation in cardiac tissue. Vol. 33(5), Annals of Biomedical Engineering, pp 590-602.
